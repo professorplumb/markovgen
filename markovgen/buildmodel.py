@@ -11,7 +11,7 @@ import sys
 def parse_args():
     parser = argparse.ArgumentParser(description="Generates a Markov model from stdin and saves it to disk.")
     parser.add_argument("-o","--output_fn", help="Output filename for generated model", required=True)
-    parser.add_argument("-n","--n_grams", help="Number of n-grams to use in model", default=2) # TODO parse as an integer
+    parser.add_argument("-n","--n_grams", help="Number of n-grams to use in model", type=int, default=2) # defaults to bigrams
     return vars(parser.parse_args())
 
 def tokenize_line(line):
