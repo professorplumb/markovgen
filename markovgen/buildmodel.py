@@ -33,7 +33,7 @@ def build_model(args):
             # foreach model, generate the necessary n-grams that led to this token
             logging.debug("i=%d: %s" % (i, token))
             for n in xrange(1, ngrams+1):
-                logging.debug("\t%s" % n)
+                logging.debug("\tn=%d" % n)
                 if i >= n: # enough to support model
                     model_key = tuple(tokens[i-n:i])
                     logging.debug("\t\t%s: %s" % (model_key, token))
