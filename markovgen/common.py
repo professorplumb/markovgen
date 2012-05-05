@@ -37,5 +37,5 @@ def configure_logging():
     log_level = logging.ERROR
     if os.environ.get("DEBUG"):
         log_level = logging.DEBUG
-    # TODO configure this a bit nicer
-    logging.basicConfig(level=log_level)
+    logging.basicConfig(level=log_level,
+                        format="%(levelname)s:%(message)s")
