@@ -3,6 +3,7 @@
 ##
 
 import argparse
+import collections
 import common
 import logging
 import sys
@@ -38,9 +39,7 @@ def build_model(args):
                     model_key = tuple(tokens[i-n:i])
                     logging.debug("\t\t%s: %s" % (model_key, token))
                     # keep track of how many times these n characters leading up to this token happens
-                    # TODO perhaps this can be cleaner with defaultdicts
-                    model[n].setdefault(model_key, {})
-                    model[n][model_key][token] = model[n][model_key].get(token, 0) + 1
+                    model[n].setdefault(model_key, collections.defaultdict(int))[token] += 1
 
     return model
 
