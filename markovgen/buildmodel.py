@@ -14,8 +14,11 @@ def parse_args():
     return vars(parser.parse_args())
 
 def tokenize_line(line):
-    # TODO punctuation, normalization, blah
-    return [common.START_TOK] + line.split() + [common.END_TOK]
+    """ Lowercase the line and strip out all non-alphabetic characters.  Prepend with a start sentinel and append with an end sentinel.
+
+    This can probably be smarter to preserve proper nouns and such. """
+    tokens = [ "".join([ ch for ch in word if ch.isalpha() ]).lower() for word in line.split() ]
+    return [common.START_TOK] + tokens + [common.END_TOK]
 
 def build_model(args):
     ngrams = args["n_grams"]
